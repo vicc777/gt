@@ -6,7 +6,7 @@ on:
 
 permissions:
   pull-requests: write
-  contents: read
+  contents: write
   
 jobs:
   comment-on-pr:
@@ -20,4 +20,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment 1 --repo ${{ github.repository }} --body "Automated comment from workflow run: ${{ github.workflow }} at ${{ github.sha }}"
+          gh pr comment 1 --repo ${{ github.repository }} --body "@copilot make test file"
