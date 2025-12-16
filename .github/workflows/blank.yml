@@ -1,0 +1,22 @@
+name: Comment on PR 
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  comment-on-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up GitHub CLI
+        uses: actions/setup-gh@v4
+
+      - name: Add comment to PR 
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment 1 --repo ${{ github.repository }} --body "Automated comment from workflow run: ${{ github.workflow }} at ${{ github.sha }}"
