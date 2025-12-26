@@ -1,15 +1,12 @@
-name: Deploy Application
+name: yoyo
 
 on:
-  deployment
+  pull_request:
 
 jobs:
-  deploy:
+  tada:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-      - name: Echo Deployment Info
+      - name: time stop
         run: |
-          echo "GITHUB_SHA: ${{ github.sha }}"
-          echo "Triggering Deployment for Environment: ${{ github.event.deployment.environment }}"
+          run: sleep 5m;
